@@ -1,11 +1,11 @@
 # ServeGen
 
 ServeGen is a framework for generating realistic large language model (LLM) serving workloads.
-Powered by the analysis of billions of inference requests across 12 production models on Alibaba's Baijian platform, ServeGen is able to replicate the nuanced complexity of real-world workloads, such as:
+Powered by the analysis of billions of inference requests across 12 production models on Alibaba's Model Studio platform, ServeGen is able to replicate the nuanced complexity of real-world workloads, such as:
 
 + **Bursty** request arrivals beyond simple Poisson models
 + **Shifting** input/output length distributions over days and weeks
-+ **Heterogeneous** data composition in multi-modal workloads (Qwen-VL)
++ **Heterogeneous** data composition in multimodal workloads (Qwen-VL)
 + **Bimodal** reasoning length distribution in reasoning workloads (DeepSeek-R1)
 
 We hope ServeGen can become a data-driven bridge between frontier research and production realities when designing and deploying new LLM serving systems.
