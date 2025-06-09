@@ -37,7 +37,7 @@ class Client:
                 if not isinstance(data["cv"], (int, float)) or data["cv"] < 0:
                     raise ValueError(f"CV at {ts} must be a non-negative number")
                 if (not isinstance(data["pat"], tuple) and not isinstance(data["pat"], list)) or len(data["pat"]) != 2:
-                    raise ValueError(f"Pattern at {ts} must be a tuple/list of (name, params) {data["pat"]}")
+                    raise ValueError(f"Pattern at {ts} must be a tuple/list of (name, params) {data['pat']}")
                 if data["pat"][0] not in [p.value for p in ArrivalPat]:
                     raise ValueError(f"Invalid arrival pattern at {ts}: {data['pat'][0]}")
 
