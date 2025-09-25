@@ -1,6 +1,8 @@
 from typing import Dict, List, Optional, Union, Tuple, Any
 import numpy as np
+import csv
 from servegen.clientpool import ClientPool, ClientPoolView, ClientWindow
+from servegen.construct import Request
 
 def get_constant_rate_fn(
     pool: Union[ClientPool, ClientPoolView],
@@ -132,3 +134,32 @@ def sample_from_cdf(
     indices = np.clip(indices, 0, len(values) - 1)
     
     return values[indices]
+
+def save_requests_to_csv(
+    requests: List[Request],
+    filename: str
+) -> None:
+    """Save list of Request objects to a CSV file.
+
+    Args:
+        requests: List of Request objects to save.
+        filename: Path to the output CSV file.
+
+    Raises:
+        ValueError: If no requests are provided.
+    """
+    if not requests:
+        raise ValueError("No requests to save.")
+
+    with open(filename, "w", newline="") as csvfile:
+        fieldnames = ["request_id", "timestamp"] + list(requests[0].data.keys())
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+        for req in requests:
+            row = {
+                "request_id": req.request_id,
+                "timestamp": req.timestamp,
+                **req.data  # Unpack the data dictionary
+            }
+            writer.writerow(row)

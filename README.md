@@ -69,6 +69,7 @@ requests = generate_workload(pool, rate_fn, duration=3600)
 ```
 
 See `examples/` for more detailed examples:
+- `basic_usage.py`: Basic workload generation and saving to CSV
 - `generate_custom.py`: Custom workload patterns
 - `generate_realistic.py`: Realistic workload generation
 - `generate_advanced.py`: Multimodal and reasoning workloads
